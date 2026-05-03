@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Only One ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500&display=swap');
+
+        :root {
+            --pink-primary: #ff85a1;
+            --pink-secondary: #fbb1bd;
+            --soft-white: #fff0f3;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fce4ec 0%, #fff1f0 100%);
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            color: #4a4a4a;
+        }
+
+        /* --- Floating Hearts Animation --- */
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: var(--pink-primary);
+            opacity: 0.6;
+            animation: moveUp 6s linear infinite;
+            font-size: 20px;
+        }
+
+        @keyframes moveUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- Header Section --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(255, 240, 243, 0.4), rgba(255, 240, 243, 0.4)), 
+                        url('photo_2026-05-03_09-44-29.jpg') no-repeat center center/cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            color: #d81b60;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* --- Timeline Section --- */
+        .timeline {
+            max-width: 900px;
+            margin: 50px auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .memory-card {
+            background: white;
+            margin: 40px 20px;
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(255, 133, 161, 0.2);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease;
+            text-align: center;
+            border: 2px solid var(--soft-white);
+        }
+
+        .memory-card.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .memory-card img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            border: 5px solid var(--soft-white);
+        }
+
+        .memory-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ad1457;
+            margin: 15px 0;
+        }
+
+        /* --- Proposal Section --- */
+        .proposal-box {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .proposal-box h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #d81b60;
+            margin-bottom: 40px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 30px;
+            position: relative;
+        }
+
+        .btn {
+            padding: 15px 50px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: bold;
+        }
+
+        .btn-yes {
+            background: var(--pink-primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 133, 161, 0.4);
+        }
+
+        .btn-yes:hover { transform: scale(1.1); background: #ff4f7d; }
+
+        .btn-no {
+            background: #eee;
+            color: #888;
+            position: relative;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 3rem; }
+            .proposal-box h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heart-bg" id="heartBg"></div>
+
+    <header>
+        <h1>To My Beautiful Soul...</h1>
+        <p style="font-size: 1.2rem; color: #666;">Scroll down to see  ❤️</p>
+    </header>
+
+    <div class="timeline">
+        <div class="memory-card">
+            <img src="photo_1_2026-05-03_09-24-09.jpg">
+            <h3>The way you shine...</h3>
+            <p>Every time I see you, my heart skips a beat.</p>
+        </div>
+
+        <div class="memory-card">
+            <img src="photo_2_2026-05-03_09-24-09.jpg">
+            <h3>Quiet Moments</h3>
+            <p>I love our peaceful walks and meaningful talks.</p>
+        </div>
+
+        <div class="memory-card">
+            <img src="photo_3_2026-05-03_09-24-09.jpg">
+            <h3>Golden Memories</h3>
+            <p>I want to cherish every single moment with you.</p>
+        </div>
+
+        <div class="memory-card">
+            <img src="photo_4_2026-05-03_09-24-09.jpg">
+            <h3>That Perfect Smile</h3>
+            <p>Your happiness is my top priority, forever.</p>
+        </div>
+
+        <div class="memory-card">
+            <img src="photo_5_2026-05-03_09-24-09.jpg">
+            <h3>My Everything</h3>
+            <p>You're the person I've been waiting for all my life.</p>
+        </div>
+        <!-- Photo 6 -->
+        <div class="memory-card">
+            <img src="photo_6_2026-05-03_09-24-09.jpg">
+            <h3>Lost in your thoughts...</h3>
+            <p>Every little thing about you makes me fall in love over and over again.</p>
+        </div>
+
+        <!-- Photo 7 -->
+        <div class="memory-card">
+            <img src="photo_7_2026-05-03_09-24-09.jpg">
+            <h3>Simply Adorable</h3>
+            <p>I promise to cherish all your moods and all your smiles for the rest of my life.</p>
+        </div>
+
+        <!-- Photo 8 -->
+        <div class="memory-card">
+            <img src="photo_8_2026-05-03_09-24-09.jpg">
+            <h3>Those Eyes...</h3>
+            <p>I see my whole future whenever I look into your beautiful eyes.</p>
+        </div>
+
+        <!-- Photo 9 -->
+        <div class="memory-card">
+            <img src="photo_9_2026-05-03_09-24-09.jpg">
+            <h3>The Perfect Journey</h3>
+            <p>We've come a long way, and I'm ready to walk every step of the future with you.</p>
+        </div>
+        <!-- You can add more photos from photo_6 to photo_9 here following the same format -->
+    </div>
+
+    <section class="proposal-box">
+        <h2>Will you be mine forever?</h2>
+        <div class="btn-group">
+            <button class="btn btn-yes" onclick="celebrate()">Yes!</button>
+            <button class="btn btn-no" id="noBtn">No</button>
+        </div>
+    </section>
+
+    <script>
+        // Create Floating Hearts
+        const heartBg = document.getElementById('heartBg');
+        const heartIcons = ['❤️', '💖', '💗', '💕', '🌸'];
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heartBg.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Scroll Animation for Cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.memory-card').forEach(card => observer.observe(card));
+
+        // Moving No Button
+        const noBtn = document.getElementById('noBtn');
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth) - (window.innerWidth/2);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight) - (window.innerHeight/2);
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+      function celebrate() {
+   
+    const botToken = "8558652452:AAG3mjUygGp_uvNhuKHs_ANhHjrC8UTt808";
+    const chatId = "7033586377";
+    const message = "💍 OMG! She said YES! ❤️✨";
+
+   
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
+    .then(response => console.log("Message Sent!"))
+    .catch(error => console.error("Error:", error));
+
+
+    alert("I promise to love you with all my heart! ❤️💍");
+    document.body.innerHTML = `
+        <div style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:#ff85a1; color:white; text-align:center;">
+            <h1 style="font-size:4rem; font-family:'Dancing Script', cursive;">She said YES! 💍</h1>
+            <p style="font-size:1.5rem;">The beginning of our forever...</p>
+            <div style="font-size:100px;">❤️</div>
+        </div>
+    `;
+    setInterval(createHeart, 50);
+}
+    </script>
+</body>
+</html>
