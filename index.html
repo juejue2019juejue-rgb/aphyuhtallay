@@ -20,7 +20,7 @@
             overflow-x: hidden; color: #4a4a4a;
         }
 
-        /* Floating Hearts Animation */
+        /* Floating Hearts */
         .heart-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
         .floating-heart { position: absolute; color: var(--pink-primary); opacity: 0.6; animation: moveUp 6s linear infinite; }
         @keyframes moveUp { 0% { transform: translateY(100vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
@@ -37,13 +37,13 @@
         #time-counter { background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 30px; margin-top: 20px; border: 2px solid var(--pink-primary); z-index: 2; }
         #minutes-count { font-size: 2.2rem; font-weight: 700; color: var(--pink-dark); display: block; }
 
-        /* Timeline Card */
+        /* Timeline Cards */
         .timeline { max-width: 800px; margin: 50px auto; padding: 20px; }
         .memory-card { background: white; margin-bottom: 50px; padding: 15px; border-radius: 25px; box-shadow: 0 15px 35px rgba(255, 133, 161, 0.15); opacity: 0; transform: translateY(50px); transition: all 1s ease; text-align: center; }
         .memory-card.active { opacity: 1; transform: translateY(0); }
         .memory-card img { width: 100%; border-radius: 20px; }
 
-        /* Yes Button */
+        /* Buttons */
         .btn-yes { background: var(--pink-primary); color: white; padding: 15px 50px; border-radius: 50px; border: none; font-size: 1.5rem; cursor: pointer; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 133, 161, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(255, 133, 161, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 133, 161, 0); } }
     </style>
@@ -52,8 +52,9 @@
 
     <div class="heart-bg" id="heartBg"></div>
 
-    <div style="position: fixed; bottom: -100px; overflow: hidden; width: 0; height: 0;">
-        <iframe width="100" height="100" src="https://www.youtube.com/embed/8req83Z24ic?autoplay=1&loop=1&playlist=8req83Z24ic&si=Fn72HqgwIPjGSlja" allow="autoplay"></iframe>
+    <!-- YouTube Music Section -->
+    <div style="position: fixed; bottom: -100px; opacity: 0;">
+        <div id="player"></div>
     </div>
 
     <header>
@@ -63,7 +64,7 @@
         <div id="time-counter">
             <p style="margin: 0; color: #666;">Together since April 30</p>
             <span id="minutes-count">0</span>
-            <p style="margin: 0; color: #666;">minutes and counting ❤️</p>
+            <p style="margin: 0; color: #666;">minutes of happiness ❤️</p>
         </div>
     </header>
 
@@ -79,7 +80,26 @@
         <button id="noBtn" style="padding: 10px 30px; border-radius: 50px; border: none; margin-left: 10px; background: #eee;">No</button>
     </div>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
+        // --- YouTube API Setup ---
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0', width: '0', videoId: '8req83Z24ic',
+                playerVars: { 'autoplay': 1, 'loop': 1, 'playlist': '8req83Z24ic', 'mute': 0 },
+                events: { 'onReady': onPlayerReady }
+            });
+        }
+        function onPlayerReady(event) {
+            const startMusic = () => { event.target.playVideo(); };
+            document.body.addEventListener('click', startMusic, { once: true });
+            document.body.addEventListener('touchstart', startMusic, { once: true });
+            document.body.addEventListener('scroll', startMusic, { once: true });
+            window.addEventListener('scroll', startMusic, { once: true });
+        }
+
+        // --- Timer (Starts April 30, 9 AM) ---
         function updateTimer() {
             const startDate = new Date(2026, 3, 30, 9, 0, 0); 
             const now = new Date();
@@ -88,6 +108,7 @@
         }
         setInterval(updateTimer, 1000); updateTimer();
 
+        // --- Floating Hearts ---
         const heartBg = document.getElementById('heartBg');
         function createHeart() {
             const heart = document.createElement('div');
@@ -100,11 +121,13 @@
         }
         setInterval(createHeart, 350);
 
+        // --- Scroll Reveal ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.memory-card').forEach(card => observer.observe(card));
 
+        // --- Runaway No Button ---
         const noBtn = document.getElementById('noBtn');
         noBtn.addEventListener('mouseover', () => {
             noBtn.style.position = 'fixed';
@@ -112,9 +135,13 @@
             noBtn.style.top = Math.random() * (window.innerHeight - 100) + 'px';
         });
 
+        // --- Telegram & Celebrate ---
         function celebrate() {
-            fetch(`https://api.telegram.org/bot8558652452:AAG3mjUygGp_uvNhuKHs_ANhHjrC8UTt808/sendMessage?chat_id=7033586377&text=${encodeURIComponent("💍 OMG! She said YES! ❤️")}`);
-            document.body.innerHTML = `<div style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:var(--pink-primary); color:white; text-align:center;"><h1 style="font-size:3.5rem; font-family:'Dancing Script';">See you at forever! 💍❤️</h1><p style="font-size:1.5rem;">I love you so much!</p><div style="font-size:100px;">💖</div></div>`;
+            const botToken = "8558652452:AAG3mjUygGp_uvNhuKHs_ANhHjrC8UTt808";
+            const chatId = "7033586377";
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent("💍 OMG! She said YES! ❤️")}`);
+
+            document.body.innerHTML = `<div style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:var(--pink-primary); color:white; text-align:center;"><h1 style="font-size:3.5rem; font-family:'Dancing Script';">See you at forever! 💍❤️</h1><p style="font-size:1.5rem;">You made my life complete.</p><div style="font-size:100px;">💖</div></div>`;
             setInterval(createHeart, 50);
         }
     </script>
